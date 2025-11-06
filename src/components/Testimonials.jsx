@@ -1,43 +1,52 @@
-import { motion } from "framer-motion";
+import React from 'react';
+import { motion } from 'framer-motion';
+
+const testimonials = [
+  {
+    quote: 'We shipped our launch 2x faster and the polish shows.',
+    author: 'Avery Lin',
+    role: 'Head of Product, Tactile',
+  },
+  {
+    quote: 'The subtle motion and dark theme made our brand feel premium.',
+    author: 'Jordan Ruiz',
+    role: 'Marketing Lead, Northwind',
+  },
+  {
+    quote: 'Setup was instant and the UX felt effortless for our team.',
+    author: 'Samira Patel',
+    role: 'Ops Director, Vertex',
+  },
+];
 
 export default function Testimonials() {
-  const quotes = [
-    {
-      name: "Amir • CEO, Lendly",
-      text:
-        "We met our CTO and first check here. Went from idea to launch in 10 weeks.",
-    },
-    {
-      name: "Sofia • Co‑founder, Nimbo",
-      text:
-        "The matching was scarily good — values and skills aligned from day one.",
-    },
-    {
-      name: "Priya • Angel Investor",
-      text:
-        "Deal flow with context. I can see team fit, traction, and what founders need.",
-    },
-  ];
-
   return (
-    <section className="bg-gradient-to-b from-white to-indigo-50/60">
-      <div className="mx-auto max-w-7xl px-6 py-20">
-        <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Loved by ambitious builders
-        </h2>
-        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {quotes.map((q, i) => (
-            <motion.figure
-              key={q.name}
-              className="rounded-2xl border border-gray-200 bg-white/70 p-6 shadow-sm backdrop-blur transition hover:shadow-md"
-              initial={{ opacity: 0, y: 20 }}
+    <section id="testimonials" className="relative z-10 py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.h2
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6 }}
+          className="text-2xl sm:text-3xl font-bold text-white"
+        >
+          Loved by modern teams
+        </motion.h2>
+        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+          {testimonials.map((t, i) => (
+            <motion.blockquote
+              key={t.author}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: i * 0.06 }}
+              transition={{ delay: i * 0.05, duration: 0.6 }}
+              className="rounded-xl border border-white/10 bg-black/40 p-6 text-white shadow-lg backdrop-blur"
             >
-              <blockquote className="text-gray-800">“{q.text}”</blockquote>
-              <figcaption className="mt-4 text-sm text-gray-600">{q.name}</figcaption>
-            </motion.figure>
+              <p className="text-sm text-zinc-200">“{t.quote}”</p>
+              <footer className="mt-4 text-xs text-zinc-400">
+                <span className="font-medium text-zinc-300">{t.author}</span> — {t.role}
+              </footer>
+            </motion.blockquote>
           ))}
         </div>
       </div>
