@@ -2,10 +2,11 @@ import Hero from "./components/Hero";
 import HowItWorks from "./components/HowItWorks";
 import Testimonials from "./components/Testimonials";
 import CTA from "./components/CTA";
+import { motion } from "framer-motion";
 
 function Navbar() {
   return (
-    <header className="sticky top-0 z-50 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+    <header className="sticky top-0 z-40 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex h-16 items-center justify-between">
           <a href="#" className="flex items-center gap-2 font-semibold text-gray-900">
@@ -18,11 +19,19 @@ function Navbar() {
             <a href="#" className="hover:text-gray-900">Stories</a>
           </nav>
           <div className="flex items-center gap-3">
-            <a href="#" className="rounded-md px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50">Sign in</a>
-            <a href="#get-started" className="rounded-md bg-indigo-600 px-3.5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700">Get started</a>
+            <a href="#" className="rounded-md px-3 py-1.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50">Sign in</a>
+            <a href="#get-started" className="rounded-md bg-indigo-600 px-3.5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700">Get started</a>
           </div>
         </div>
       </div>
+      {/* Animated divider */}
+      <motion.div
+        className="h-px w-full bg-gradient-to-r from-transparent via-indigo-200 to-transparent"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        style={{ transformOrigin: "left" }}
+      />
     </header>
   );
 }

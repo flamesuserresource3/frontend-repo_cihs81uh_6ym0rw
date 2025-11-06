@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 export default function Testimonials() {
   const quotes = [
     {
@@ -24,14 +26,18 @@ export default function Testimonials() {
           Loved by ambitious builders
         </h2>
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {quotes.map((q) => (
-            <figure
+          {quotes.map((q, i) => (
+            <motion.figure
               key={q.name}
-              className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
+              className="rounded-2xl border border-gray-200 bg-white/70 p-6 shadow-sm backdrop-blur transition hover:shadow-md"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
             >
               <blockquote className="text-gray-800">“{q.text}”</blockquote>
               <figcaption className="mt-4 text-sm text-gray-600">{q.name}</figcaption>
-            </figure>
+            </motion.figure>
           ))}
         </div>
       </div>
